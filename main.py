@@ -27,12 +27,32 @@ def gameloop(arrin):
         if guessword == currdisplay:
             print(currdisplay)
             print("Winner!")
-            exit()
+            imp = input("Play again (Y/N)? ")
+            while True:
+                if imp.lower() == "y":
+                    print("Playing again!")
+                    main()
+                elif imp.lower() == "n":
+                    print("Thanks for playing!")
+                    exit()
+                else:
+                    print("Not a command.")
         if ifCorr != True:
             lives = lives - 1
         if lives == 0:
             print("You lost lol")
-            exit()
+            imp = input("Play again (Y/N)? ")
+            while True:
+                if imp.lower() == "y":
+                    print("Playing again!")
+                    main()
+                elif imp.lower() == "n":
+                    print("Thanks for playing!")
+                    exit()
+                else:
+                    print("Not a command.")
 
-while True:
+def main():
     gameloop(random.randrange(0, len(words)))
+
+main()
