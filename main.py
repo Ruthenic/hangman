@@ -27,8 +27,8 @@ def gameloop(arrin):
         if guessword == currdisplay:
             print(currdisplay)
             print("Winner!")
-            imp = input("Play again (Y/N)? ")
             while True:
+                imp = input("Play again (Y/N)? ")
                 if imp.lower() == "y":
                     print("Playing again!")
                     main()
@@ -41,8 +41,9 @@ def gameloop(arrin):
             lives = lives - 1
         if lives == 0:
             print("You lost lol")
-            imp = input("Play again (Y/N)? ")
+            print("The word was:", guessword)
             while True:
+                imp = input("Play again (Y/N)? ")
                 if imp.lower() == "y":
                     print("Playing again!")
                     main()
