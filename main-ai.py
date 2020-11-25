@@ -1,12 +1,11 @@
 import random
 #words = ["hazbin", "meme", "yacoding", "doge", "red"]
 words = []
-wronged = []
-with open("freqlist.txt") as f:
+freqs = []
+with open("words.txt") as f:
     for line in f:
         words.append(line.strip())
 def gameloop(arrin):
-    wronged = []
     currdisplay = ""
     guessword = words[arrin].lower()
     lives = 5
@@ -14,12 +13,15 @@ def gameloop(arrin):
         if guessword[element] != " ":
             currdisplay = currdisplay + "_"
         else:
-            currdisplay = currdisplay + " "
+            currdisplay = currdisplay + "-"
+    with open("wordfrequencies.txt") as f:
+        for line in f:
+            freqs.append(line.strip())
     while True:
         ifCorr = ""
-        print("Current wrong letters: ", wronged)
-        print("Lives: " + str(lives) + "\n" + currdisplay)        
-        imp = input("Guess a letter: ").lower()
+        print("Lives: " + str(lives))
+        print(currdisplay)
+        #imp = input("Guess a letter: ").lower()
         for element in range(0, len(guessword)):
             if guessword[element] == imp:
                 currlist = list(currdisplay)
@@ -27,7 +29,8 @@ def gameloop(arrin):
                 currdisplay = "".join(currlist)
                 ifCorr = True
         if guessword == currdisplay:
-            print(currdisplay, "\nWinner!")
+            print(currdisplay)
+            print("Winner!")
             while True:
                 imp = input("Play again (Y/N)? ")
                 if imp.lower() == "y":
@@ -40,9 +43,9 @@ def gameloop(arrin):
                     print("Not a command.")
         if ifCorr != True:
             lives = lives - 1
-            wronged.append(imp)
-        if lives <= 0:
-            print("You lost lol", "\nThe word was:", guessword)
+        if lives == 0:
+            print("You lost lol")
+            print("The word was:", guessword)
             while True:
                 imp = input("Play again (Y/N)? ")
                 if imp.lower() == "y":
@@ -53,6 +56,8 @@ def gameloop(arrin):
                     exit()
                 else:
                     print("Not a command.")
+
 def main():
     gameloop(random.randrange(0, len(words)))
+
 main()

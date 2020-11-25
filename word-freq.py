@@ -1,3 +1,4 @@
+import os
 af = 0
 bf = 0
 cf = 0
@@ -112,3 +113,9 @@ print("Y:", yf)
 print("Z:", zf)
 print("\nSorted:")
 print(sorted([af, bf, cf, df, ef, ff, gf, hf, ife, jf, kf, lf, nf, mf, of, pf, qf, rf, tf, uf, vf, wf, xf, yf, zf], reverse=True))
+listified = [af, bf, cf, df, ef, ff, gf, hf, ife, jf, kf, lf, nf, mf, of, pf, qf, rf, tf, uf, vf, wf, xf, yf, zf]
+#if os.path.exists("wordfrequencies.txt"):
+#    os.remove("wordfrequencies.txt")
+with open("wordfrequencies.txt", "w+") as f:
+    for freq in listified:
+        f.write(str(freq) + "\n")
