@@ -2,7 +2,7 @@ import random
 #words = ["hazbin", "meme", "yacoding", "doge", "red"]
 words = []
 wronged = []
-with open("freqlist.txt") as f:
+with open("words.txt") as f:
     for line in f:
         words.append(line.strip())
 def gameloop(arrin):
